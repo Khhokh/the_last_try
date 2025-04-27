@@ -8,15 +8,19 @@ const router = express.Router();
 // router.get('/favicon.ico', (req, res) => res.status(204).end());
 
 
-router.get('/',authController.isLoggedIn,viewsController.getOverView);
+router.get('/',viewsController.getWelComePage);
+router.get('/signup',viewsController.getSingup)
+router.get('/login',viewsController.getLoginForm);
+router.get('/alldoc',authController.protect,authController.isLoggedIn,viewsController.getOverView);
 router.get('/predictions',viewsController.getPredcitonsDoc);
 router.post('/predict',viewsController.getPredcitons);
-router.get('/signup',viewsController.getSingup)
 router.get('/prediction',viewsController.getPredcitonsForm);
 
-router.get('/medicat',viewsController.getMedicat);
+router.get('/appointment',authController.protect,authController.isLoggedIn,viewsController.getAppointment);
+
+router.get('/medicat',authController.isLoggedIn,viewsController.getMedicat);
 router.get('/tour/:slug',authController.protect,authController.isLoggedIn,viewsController.getTour);
-router.get('/login',authController.isLoggedIn,viewsController.getLoginForm);
+// router.get('/login',viewsController.getLoginForm);
 router.get('/me',authController.protect,viewsController.getAccont);
 
 module.exports = router;

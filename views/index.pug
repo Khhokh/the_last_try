@@ -1,186 +1,154 @@
+extends base
 
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport" content="width=device-width, initial-scale=1.0")
-        title Medical AI
-        link(href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=ambulance,blood_pressure,ecg_heart,favorite,home,medical_information,outpatient_med,search,settings,stacks" rel="stylesheet")
-        link(href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=clock_loader_40" rel="stylesheet")
-        link(rel="preconnect" href="https://fonts.googleapis.com")
-        link(href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,700,0,-25&icon_names=search" rel="stylesheet")
-        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
-        link(href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet")
-        link(rel="stylesheet" href="/css/styles.css")
-        link(rel='stylesheet' href='/css/style.css')
-    body
-        include _header
+block content
+    section.hero
+        .hero-content
+            h1 No ordinary
+                br
+                | doctor's office
+            p Get 24/7 on-demand virtual care. Or book same/next-day appointments — in our offices or over video — with our app. Most insurance accepted.
+            .cta-buttons
+                button.cta-primary Sign up today
+                button.cta-secondary Gift a membership
+            p.sponsored Sponsored membership? 
+                a(href="#") Click here ›
 
-        // Hero Section
-        section.hero
-            section.headerfirst
-                .first-div
-                    h1.h1 AI-Powered Disease Detection at Your Fingertips
-                    p Our advanced AI-driven health diagnostic system helps you detect potential diseases quickly and accurately. By analyzing symptoms and medical data, our technology provides reliable predictions, enabling early detection and timely medical intervention.
-                    button.btn.btn-1 Learn More
-                    button.btn.btn-1.btn-2(onclick="window.location.href='login.html'") Login-Here
-                    .search
-                        a(href="./predictionModel.html", style="margin-top: 0; font-size: 19px;")
-                            b P
-                            | redict Diagnose Connect - Your Health, Simplified
-                .second-div.step-img-box
-                    img.image(src="./images/pexels-shkrabaanthony-5215024.png", alt="DoctorImage")
-            .line-div
+        .hero-image
+            .top-image
+                img(src="/api/placeholder/500/400" alt="Two people talking in a modern office space" style="width: 100%; height: 100%; object-fit: cover;")
+            .bottom-image
+                img(src="/api/placeholder/200/150" alt="Person looking at a tablet with doctor" style="width: 100%; height: 100%; object-fit: cover;")
 
-        section.How-it-build
-            .how-its-works
-                h2 How Its Works
-            .howitwokrs
-                .s2-1.s.step-img-box2
-                    img.img2(style="width: 335px;margin-top: 38px;", src="./images/online-medical-help-concept-woman-doctor-glasses-face-mask-showing-mobile-phone-screen-app-interface-website-patients-standing-white-background (1).png", alt="search")
-                div
-                    p.step-number 01
-                    p(style="margin-bottom: 20px;")
-                        b Enter Your Symptoms –
-                        | Provide detailed information about your symptoms by filling out a comprehensive health assessment form, allowing our AI-powered system to analyze and predict potential diseases with high accuracy.
-                div
-                    p.step-number 02
-                    p(style="margin-bottom: 20px;")
-                        b AI Analysis & Prediction –
-                        | Our advanced machine learning model intelligently processes your health data, analyzing patterns and symptoms to predict potential diseases with high accuracy, helping you take proactive steps toward better healthcare
-                .s2-2.s.step-img-box2
-                    img.img2(style="width: 285px;", src="./images/doctor-holding-tablet-looking-gadget (1).png", alt="img3")
-                .s2-3.s.step-img-box2
-                    img.img2(style="width: 290px;", src="./images/young-doctor-holding-his-hands-up-look-away (1).png", alt="img4")
-                div
-                    p.step-number 03
-                    p(style="margin-bottom: 20px;")
-                        b Get Recommendations –
-                        | Instantly access a curated list of doctors, medicines, and personalized health advice based on your predicted condition, empowering you with the right resources for effective health management and informed decision-making.
+    section.how-it-works
+        .container
+            .section-header
+                h2 How Prime Health Works
+                p.subtitle Simple steps to better healthcare
 
-        section.About-Us
-            span.aboutUs About Us
-            .about
-                .about1
-                    p.para1(style="font-size: 19px;") Welcome to HealthPredict, an AI-powered platform for disease prediction and doctor recommendations. Our machine learning model analyzes symptoms to provide quick, reliable health insights and connects you with the right specialists
-                .about2
-                    span.aboutHeading Why Choose HealthPredict?
-            .about-second
-                .divA1.di
-                    img.icon(src="./images/12347005761605633111.svg", alt="")
-                    .numm 18
-                    .te Doctors
-                .divA2.di
-                    img.icon(src="./images/13155359091605633112.svg", alt="")
-                    .numm 60
-                    .te Diseases
-                .divA3.di
-                    img.icon(src="./images/19383554821605633113.svg", alt=" ")
-                    .numm 5
-                    .te T-Modles
-                .divA4.di
-                    img.icon(src="./images/21030093621605633113.svg", alt="")
-                    .numm(style="margin-left:30%") 1200+
-                    .te(style="margin-left:81px;") Durgs
+            .steps-container
+                .step
+                    .step-icon
+                        i.fas.fa-mobile-alt
+                    h3 Sign Up
+                    p Create your account in minutes through our website or mobile app. Add your insurance and medical history.
+                    .step-number 1
 
-        section.Services
-            .serviceHead
-                span Services
-            .serviceGrid
-                .s1
-                    span.material-symbols-outlined.google-fnt ecg_heart
-                    .serT SomeThings
-                    .divSer Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus assumenda delectus quisquam, quo molestias incidunt! Unde a fugiat in iusto?
-                .s1
-                    span.material-symbols-outlined.google-fnt stacks
-                    .serT whatisthis
-                    .divSer Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus assumenda delectus quisquam, quo molestias incidunt! Unde a fugiat in iusto?
-                .s1
-                    span.material-symbols-outlined.google-fnt medical_information
-                    .serT helloWorld
-                    .divSer Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus assumenda delectus quisquam, quo molestias incidunt! Unde a fugiat in iusto?
-                .s1
-                    span.material-symbols-outlined.google-fnt blood_pressure
-                    .serT findSometh
-                    .divSer Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus assumenda delectus quisquam, quo molestias incidunt! Unde a fugiat in iusto?
-                .s1
-                    span.material-symbols-outlined.google-fnt ambulance
-                    .serT neverSeen
-                    .divSer Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus assumenda delectus quisquam, quo molestias incidunt! Unde a fugiat in iusto?
-                .s1
-                    span.material-symbols-outlined.google-fnt outpatient_med
-                    .serT WhatIsThis
-                    .divSer Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus assumenda delectus quisquam, quo molestias incidunt! Unde a fugiat in iusto?
+                .connector
+                    .connector-line
 
-        //- section.Doctors-Sections
-        //-     .doctors(style="color: rgb(0, 0, 0); border-bottom: 1px solid;")
-        //-         span Doctors
-        //-     .Doctors-Grid
-        //-         .d1
-        //-             .d1-1
-        //-                 img.doc-img(src="./images/doctors/doctor1.png", alt="")
-        //-             .d-allElement
-        //-                 span.DocName Partha Jyoti Phukon
-        //-                 p.dp Chief Medical Officer
-        //-                 div
-        //-                     img.dicon(src="./images/icons/whatsapp.png", alt="")
-        //-                     img.dicon(src="./images/icons/facebook.png", alt="")
-        //-                     img.dicon(src="./images/icons/twitter.png", alt="")
-        //-                     img.dicon(src="./images/icons/instagram.png", alt="")
-        //-         .d1
-        //-             .d1-1
-        //-                 img.doc-img(style="width: 170px;margin-left: -17px;", src="./images/doctors/doctor2.png", alt="")
-        //-             .d-allElement
-        //-                 span.DocName Partha Jyoti Phukon
-        //-                 p.dp Anesthesiologist
-        //-                 div
-        //-                     img.dicon(src="./images/icons/whatsapp.png", alt="")
-        //-                     img.dicon(src="./images/icons/facebook.png", alt="")
-        //-                     img.dicon(src="./images/icons/twitter.png", alt="")
-        //-                     img.dicon(src="./images/icons/instagram.png", alt="")
-        //-         .d1
-        //-             .d1-1
-        //-                 img.doc-img(src="./images/doctors/doctor3.png", alt="")
-        //-             .d-allElement
-        //-                 span.DocName Partha Jyoti Phukon
-        //-                 p.dp Cardiology
-        //-                 div
-        //-                     img.dicon(src="./images/icons/whatsapp.png", alt="")
-        //-                     img.dicon(src="./images/icons/facebook.png", alt="")
-        //-                     img.dicon(src="./images/icons/twitter.png", alt="")
-        //-                     img.dicon(src="./images/icons/instagram.png", alt="")
-        //-         .d1
-        //-             .d1-1
-        //-                 img.doc-img(style="width: 304px;margin-top: -28px;margin-left: -62px;", src="./images/doctors/pixelcut-export (4).png", alt="")
-        //-             .d-allElement
-        //-                 span.DocName Partha Jyoti Phukon
-        //-                 p.dp Neurosurgeon
-        //-                 div
-        //-                     img.dicon(src="./images/icons/whatsapp.png", alt="")
-        //-                     img.dicon(src="./images/icons/facebook.png", alt="")
-        //-                     img.dicon(src="./images/icons/twitter.png", alt="")
-        //-                     img.dicon(src="./images/icons/instagram.png", alt="")
+                .step
+                    .step-icon
+                        i.fas.fa-calendar-check
+                    h3 Book Appointment
+                    p Schedule same-day or next-day appointments at our offices or via video call, whatever works best for you.
+                    .step-number 2
 
-        section.Appointment
-            .appHead
-                span(style="border-bottom: 1px solid gray;") Appointment
-            div(style="margin-top: -58px;")
-                form(action="Submit")
-                    .divForForm
-                        div
-                            input.placeholder(placeholder="Enter Your Name", type="text")
-                        div
-                            input.placeholder(placeholder="Enter Your Email", type="email")
-                        div
-                            input.placeholder(placeholder="Enter Your Number", type="number")
-                        div
-                            input.placeholder(placeholder="Enter Your Number", type="number")
-                        div
-                            input.placeholder(placeholder="Enter Your Number", type="number")
-                        div
-                            input.placeholder(placeholder="Enter Your Number", type="number")
-                        div
-                            textarea.textA.newClassBox(name="message", rows="10", cols="170", placeholder="Write your message here...")
-                .first-button
-                    button.fBtn Make Appointment
+                .connector
+                    .connector-line
 
-        include _footer
+                .step
+                    .step-icon
+                        i.fas.fa-user-md
+                    h3 See Provider
+                    p Meet with our experienced healthcare providers who take time to understand your needs and concerns.
+                    .step-number 3
+
+                .connector
+                    .connector-line
+
+                .step
+                    .step-icon
+                        i.fas.fa-heartbeat
+                    h3 Ongoing Care
+                    p Receive personalized care plans, prescriptions, and 24/7 support through our secure messaging system.
+                    .step-number 4
+
+            .testimonial
+                .quote-icon
+                    i.fas.fa-quote-left
+                p.quote-text "Prime Health transformed how I manage my healthcare. The app is intuitive, and I can always get an appointment when I need one."
+                .author
+                    .author-image
+                        img(src="/api/placeholder/60/60" alt="Patient testimonial" style="border-radius: 50%;")
+                    .author-info
+                        p.author-name Sarah Johnson
+                        p.author-title Member since 2023
+
+            .cta-container
+                button.cta-primary Download our app
+                button.cta-secondary Learn more
+
+    section.about-us
+        .container
+            .section-header
+                h2 About Prime Health
+                p.subtitle Reimagining healthcare for the modern world
+
+            .about-content
+                .about-image
+                    .image-main
+                        img(src="/api/placeholder/500/400" alt="Modern medical facility" style="width: 100%; height: 100%; object-fit: cover;")
+                    .image-accent
+                        img(src="/api/placeholder/200/200" alt="Caring medical professional" style="width: 100%; height: 100%; object-fit: cover;")
+                    .shape-decoration
+
+                .about-text
+                    h3 Our Mission
+                    p Prime Health was founded on a simple but powerful idea: healthcare should be accessible, personalized, and seamlessly integrated into modern life. We're committed to rebuilding the healthcare experience from the ground up.
+
+                    .stats-container
+                        .stat-item
+                            span.stat-number 98%
+                            span.stat-label Patient satisfaction
+                        .stat-item
+                            span.stat-number 50+
+                            span.stat-label Office locations
+                        .stat-item
+                            span.stat-number 24/7
+                            span.stat-label Virtual care
+
+                    h3 Our Approach
+                    p We combine cutting-edge technology with compassionate care to deliver an unparalleled healthcare experience. Our providers spend more time with patients, our offices are designed for comfort, and our app keeps you connected to care whenever you need it.
+
+                    .features
+                        .feature
+                            i.fas.fa-check-circle
+                            span Board-certified providers
+                        .feature
+                            i.fas.fa-check-circle
+                            span Insurance-friendly policies
+                        .feature
+                            i.fas.fa-check-circle
+                            span Same-day appointments
+                        .feature
+                            i.fas.fa-check-circle
+                            span Transparent pricing
+
+                    button.cta-primary Meet our team
+
+            .values-section
+                h3 Our Core Values
+                .values-container
+                    .value-card
+                        .value-icon
+                            i.fas.fa-heart
+                        h4 Patient-First Care
+                        p Every decision we make starts with what's best for our patients, prioritizing your health outcomes and experience.
+
+                    .value-card
+                        .value-icon
+                            i.fas.fa-bolt
+                        h4 Innovation
+                        p We continuously seek better ways to deliver care, embracing technology and modern practices.
+
+                    .value-card
+                        .value-icon
+                            i.fas.fa-hand-holding-heart
+                        h4 Compassion
+                        p Healthcare is deeply personal, and we approach every interaction with empathy and understanding.
+
+                    .value-card
+                        .value-icon
+                            i.fas.fa-shield-alt
+                        h4 Integrity
+                        p We maintain the highest standards of professionalism and ethical care in everything we do.

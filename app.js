@@ -9,6 +9,7 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 
+const appointmentRouter = require('./routes/appointmentRouter');
 const viewRouter = require('./routes/viewRouts');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
@@ -92,6 +93,8 @@ app.use('/',viewRouter);
 app.use('/api/v1/tours',tourRouter);
 app.use('/api/v1/users',userRouter);
 app.use('/api/v1/reviews',reviewRouter);
+
+app.use('/api/v1/appointments', appointmentRouter); 
  
 app.all('*',(req,res,next)=>{
   // const err = new Error(`Can't find ${req.originalUrl} on this server!`)

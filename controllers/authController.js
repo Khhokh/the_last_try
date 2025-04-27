@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
+const Appoint = require('../models/appointmentModel');
 const crypto = require('crypto');
 const catchAsync = require('../util/catchAsync');
 const AppError = require('../util/appError');
@@ -47,6 +48,19 @@ exports.signup = catchAsync(async(req,res,next) => {
     console.log('email send successfully');
     createSendToken(newUser,201,res);
 });
+
+
+
+exports.appoint = catchAsync(async(req,res,next) => {
+    const newAppoint = await Appoint.create(req.body);
+    console.log(req.body);
+    const url = `${req.protocol}://${req.get('host')}/appoint`;
+    console.log(url);
+    await new Email(newAppoint,url).sendWelcome();
+    console.log('email send successfully');
+    createSendToken(newAppoint,201,res);
+});
+
 
 
 exports.login = async(req,res,next) =>{

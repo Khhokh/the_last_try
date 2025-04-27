@@ -12,6 +12,14 @@ router.get('/logOut',authController.logOut);
 router.post('/forgotPassword',authController.forgotPassword);
 router.patch('/resetPassword/:token',authController.resetPassword);
 
+
+
+
+// router.post('/appoint',authController.appoint);
+
+
+
+
 //Protect all the routes 
 router.use(authController.protect); // now this will act as an middle ware to the router of the below routes where it will add the protect middle functions 
 

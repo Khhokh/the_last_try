@@ -6,14 +6,10 @@ const ML_API_URL = "http://127.0.0.1:5000/predict";
 exports.getOverView = catchAsync(async(req,res)=>{
     // 1. get tour data from collection
     const tours = await Tour.find();
-
     // 2. Build template 
-
-
     // 3. Render the template using tour data from (1)
-
     res.status(200).render('overview',{
-      title:'All Tours',
+      title:'All Doctors',
       tours
     });
 })
@@ -25,6 +21,7 @@ exports.getMedicat = catchAsync(async(req,res)=>{
     tour
   })
 })
+
 exports.getPredcitonsDoc = catchAsync(async(req,res)=>{
   res.status(200).render('prediction',{
     title:'Prediction Model'
@@ -42,8 +39,6 @@ exports.getTour = catchAsync(async(req,res)=>{
       return next(new AppError('There is no tour with that name.', 404));
     }
   //2) Build template 
-
-
   //3) render templage using data from 1)
     res.status(200).render('tour',{
       title:'The Forest Hiker Tour',
@@ -63,8 +58,6 @@ exports.getAccont = catchAsync(async(req,res)=>{
   });
 });
 
-
-
 exports.updateUserData = catchAsync(async (req, res, next) => {
   const updatedUser = await User.findByIdAndUpdate(
     req.user.id,
@@ -77,15 +70,11 @@ exports.updateUserData = catchAsync(async (req, res, next) => {
       runValidators: true
     }
   );
-
   res.status(200).render('account', {
     title: 'Your account',
     user: updatedUser
   });
 });
-
-
-
 
 exports.getPredcitons = catchAsync(async (req, res) => {
   try {
@@ -110,4 +99,18 @@ exports.getPredcitonsForm = catchAsync(async(req,res)=>{
   res.status(200).render('prediction',{
     title:'prediction form'
   });
+})
+
+exports.getWelComePage = catchAsync(async(req,res)=>{
+  res.status(200).render('welcome',{
+    title:'welcomePage'
+  })
+})
+
+exports.getAppointment = catchAsync(async(req,res)=>{
+  const tourName = req.query.tour || 'No tour selected';
+  res.status(200).render('appointment', {
+    title: 'Appointment',
+    tourName: tourName
+})
 })

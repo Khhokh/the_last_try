@@ -6,12 +6,27 @@ const handleCastErrorDB = err=>{
   return new AppError(message , 400);
 }
 
-const handleDuplicateFieldDB = err =>{
-  const value = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
-  console.log(value);
-  const message = `Duplicate field value: ${value}.Please use another value!`;
+// const handleDuplicateFieldDB = err =>{
+//   const value = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
+//   console.log(value);
+//   const message = `Duplicate field value: ${value}.Please use another value!`;
+//   return new AppError(message, 400);
+// }
+
+const handleDuplicateFieldDB = err => {
+  let value = '';
+  if (err.keyValue) {
+    value = Object.values(err.keyValue)[0];
+  } else if (err.message) {
+    const match = err.message.match(/(["'])(\\?.)*?\1/);
+    value = match ? match[0] : 'duplicate value';
+  } else {
+    value = 'duplicate value';
+  }
+
+  const message = `Duplicate field value: ${value}. Please use another value!`;
   return new AppError(message, 400);
-}
+};
 
 const handleValidationErrorDB = err =>{
   const errors = Object.values(err.errors).map(el=>el.message);
@@ -138,7 +153,7 @@ module.exports = (err, req, res, next) => {
     error.message = err.message;
 
     if (error.name === 'CastError') error = handleCastErrorDB(error);
-    if (error.code === 11000) error = handleDuplicateFieldsDB(error);
+    if (error.code === 11000) error = handleDuplicateFieldDB(error);
     if (error.name === 'ValidationError')
       error = handleValidationErrorDB(error);
     if (error.name === 'JsonWebTokenError') error = handleJWTError();
